@@ -10,6 +10,7 @@ function Preferences({
   selectedPreferences = [],
   onPreferenceChange,
   loading = false,
+  error,
 }) {
   const [currentPreferences, setCurrentPreferences] =
     useState(selectedPreferences);
@@ -44,6 +45,7 @@ function Preferences({
           </li>
         ))}
       </ul>
+      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>
   );
 }
@@ -53,11 +55,13 @@ Preferences.propTypes = {
   selectedPreferences: PropTypes.array,
   onPreferenceChange: PropTypes.func.isRequired,
   loading: PropTypes.bool,
+  error: PropTypes.string,
 };
 
 Preferences.defaultProps = {
   selectedPreferences: [],
   loading: false,
+  error: null,
 };
 
 export default Preferences;

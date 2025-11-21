@@ -8,6 +8,7 @@ function Features({
   selectedFeatures = [],
   onFeatureChange,
   loading = false,
+  error,
 }) {
   const [currentFeatures, setCurrentFeatures] = useState(selectedFeatures);
 
@@ -41,6 +42,7 @@ function Features({
           </li>
         ))}
       </ul>
+      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>
   );
 }
@@ -50,11 +52,13 @@ Features.propTypes = {
   selectedFeatures: PropTypes.array,
   onFeatureChange: PropTypes.func.isRequired,
   loading: PropTypes.bool,
+  error: PropTypes.string,
 };
 
 Features.defaultProps = {
   selectedFeatures: [],
   loading: false,
+  error: null,
 };
 
 export default Features;

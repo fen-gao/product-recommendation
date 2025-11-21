@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Checkbox from '../../shared/Checkbox';
 
-function RecommendationType({ onRecommendationTypeChange }) {
+function RecommendationType({ onRecommendationTypeChange, error }) {
   return (
     <div className="mb-4">
       <h2 className="text-lg font-bold mb-2">Tipo de Recomendação:</h2>
@@ -27,8 +28,18 @@ function RecommendationType({ onRecommendationTypeChange }) {
         />
         <label htmlFor="MultipleProducts">Múltiplos Produtos</label>
       </div>
+      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>
   );
 }
+
+RecommendationType.propTypes = {
+  onRecommendationTypeChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
+};
+
+RecommendationType.defaultProps = {
+  error: null,
+};
 
 export default RecommendationType;
