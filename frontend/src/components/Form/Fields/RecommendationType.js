@@ -7,6 +7,7 @@ function RecommendationType({ onRecommendationTypeChange }) {
       <h2 className="text-lg font-bold mb-2">Tipo de Recomendação:</h2>
       <div className="flex items-center">
         <Checkbox
+          id="SingleProduct"
           type="radio"
           name="recommendationType"
           value="SingleProduct"
@@ -17,6 +18,7 @@ function RecommendationType({ onRecommendationTypeChange }) {
           Produto Único
         </label>
         <Checkbox
+          id="MultipleProducts"
           type="radio"
           name="recommendationType"
           value="MultipleProducts"
