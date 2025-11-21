@@ -1,21 +1,52 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function SkeletonLoader({ title, count = 4 }) {
+function SkeletonLoader({ title, count = 4, icon = '⏳', bgColor = 'bg-gray-50' }) {
   return (
-    <div className="mb-4">
-      <h2 className="text-lg font-bold mb-2">{title}</h2>
-      <ul>
+    <div className="mb-6">
+      {/* Header com ícone e título */}
+      <div className="flex items-center mb-3">
+        <span className="text-2xl mr-2">{icon}</span>
+        <div className="h-6 bg-gray-300 rounded w-32 animate-pulse"></div>
+      </div>
+
+      {/* Container com background colorido */}
+      <div className={`space-y-2 ${bgColor} p-4 rounded-lg border border-gray-200`}>
         {Array.from({ length: count }).map((_, index) => (
-          <li key={index} className="mb-2">
-            <div className="flex items-center space-x-2 animate-pulse">
-              <div className="w-4 h-4 bg-gray-300 rounded"></div>
-              <div className="h-4 bg-gray-300 rounded w-full max-w-xs"></div>
+          <div
+            key={index}
+            className="bg-white p-2 rounded-md animate-pulse"
+          >
+            <div className="flex items-center space-x-3">
+              {/* Checkbox skeleton */}
+              <div className="w-5 h-5 bg-gray-300 rounded"></div>
+              {/* Text skeleton com largura variável */}
+              <div
+                className="h-4 bg-gray-300 rounded"
+                style={{
+                  width: `${Math.floor(Math.random() * 40) + 60}%`,
+                }}
+              ></div>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
+
+SkeletonLoader.propTypes = {
+  title: PropTypes.string,
+  count: PropTypes.number,
+  icon: PropTypes.string,
+  bgColor: PropTypes.string,
+};
+
+SkeletonLoader.defaultProps = {
+  title: '',
+  count: 4,
+  icon: '⏳',
+  bgColor: 'bg-gray-50',
+};
 
 export default SkeletonLoader;

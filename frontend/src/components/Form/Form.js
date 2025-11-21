@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Preferences, Features, RecommendationType } from './Fields';
 import { SubmitButton } from './SubmitButton';
@@ -51,11 +51,16 @@ function Form({ onRecommendationsUpdate }) {
     }
   };
 
+  const isFormValid = useMemo(() => {
+    const hasRecommendationType = !!formData.selectedRecommendationType;
+    const hasPreferences = formData.selectedPreferences.length > 0;
+    const hasFeatures = formData.selectedFeatures.length > 0;
+
+    return hasRecommendationType && (hasPreferences || hasFeatures);
+  }, [formData]);
+
   return (
-    <form
-      className="max-w-md mx-auto p-4 bg-white rounded-lg shadow-md"
-      onSubmit={handleSubmit}
-    >
+    <form className="space-y-6" onSubmit={handleSubmit}>
       <Preferences
         preferences={preferences}
         loading={loading}
@@ -87,7 +92,7 @@ function Form({ onRecommendationsUpdate }) {
         }}
         error={errors.recommendationType}
       />
-      <SubmitButton text="Obter recomendação" />
+      <SubmitButton text="Obter recomendação" disabled={!isFormValid} />
     </form>
   );
 }

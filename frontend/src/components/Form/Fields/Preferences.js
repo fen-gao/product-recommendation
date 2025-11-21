@@ -25,27 +25,44 @@ function Preferences({
   };
 
   if (loading) {
-    return <SkeletonLoader title="Preferências:" count={4} />;
+    return (
+      <SkeletonLoader
+        title="Preferências:"
+        count={4}
+        icon="💡"
+        bgColor="bg-blue-50"
+      />
+    );
   }
 
   return (
-    <div className="mb-4">
-      <h2 className="text-lg font-bold mb-2">Preferências:</h2>
-      <ul>
+    <div className="mb-6">
+      <div className="flex items-center mb-3">
+        <span className="text-2xl mr-2">💡</span>
+        <h3 className="text-lg font-semibold text-gray-800">Preferências</h3>
+      </div>
+      <div className="space-y-2 bg-blue-50 p-4 rounded-lg border border-blue-100">
         {preferences.map((preference, index) => (
-          <li key={index} className="mb-2">
+          <div
+            key={index}
+            className="bg-white p-2 rounded-md hover:bg-blue-50 transition-colors"
+          >
             <Checkbox
               value={preference}
               checked={currentPreferences.includes(preference)}
               onChange={() => handlePreferenceChange(preference)}
-              className="text-blue-500"
             >
               {preference}
             </Checkbox>
-          </li>
+          </div>
         ))}
-      </ul>
-      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+      </div>
+      {error && (
+        <div className="mt-2 flex items-center text-red-600 text-sm">
+          <span className="mr-1">⚠️</span>
+          {error}
+        </div>
+      )}
     </div>
   );
 }
