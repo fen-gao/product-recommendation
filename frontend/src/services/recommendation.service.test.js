@@ -1,7 +1,7 @@
-import recommendationService from './recommendation.service';
+import { getRecommendations } from './recommendation.service';
 import mockProducts from '../mocks/mockProducts';
 
-describe('recommendationService', () => {
+describe('getRecommendations', () => {
   test('Retorna recomendação correta para SingleProduct com base nas preferências selecionadas', () => {
     const formData = {
       selectedPreferences: ['Integração com chatbots'],
@@ -9,10 +9,7 @@ describe('recommendationService', () => {
       selectedRecommendationType: 'SingleProduct',
     };
 
-    const recommendations = recommendationService.getRecommendations(
-      formData,
-      mockProducts
-    );
+    const recommendations = getRecommendations(formData, mockProducts);
 
     expect(recommendations).toHaveLength(1);
     expect(recommendations[0].name).toBe('RD Conversas');
@@ -32,10 +29,7 @@ describe('recommendationService', () => {
       selectedRecommendationType: 'MultipleProducts',
     };
 
-    const recommendations = recommendationService.getRecommendations(
-      formData,
-      mockProducts
-    );
+    const recommendations = getRecommendations(formData, mockProducts);
 
     expect(recommendations).toHaveLength(2);
     expect(recommendations.map((product) => product.name)).toEqual([
@@ -57,10 +51,7 @@ describe('recommendationService', () => {
       selectedRecommendationType: 'SingleProduct',
     };
 
-    const recommendations = recommendationService.getRecommendations(
-      formData,
-      mockProducts
-    );
+    const recommendations = getRecommendations(formData, mockProducts);
 
     expect(recommendations).toHaveLength(1);
     expect(recommendations[0].name).toBe('RD Station Marketing');
@@ -75,10 +66,7 @@ describe('recommendationService', () => {
       selectedRecommendationType: 'SingleProduct',
     };
 
-    const recommendations = recommendationService.getRecommendations(
-      formData,
-      mockProducts
-    );
+    const recommendations = getRecommendations(formData, mockProducts);
 
     expect(recommendations).toHaveLength(1);
     expect(recommendations[0].name).toBe('RD Conversas');

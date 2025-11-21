@@ -33,7 +33,7 @@ const calculateProductScore = (
  * @param {Array} products - List of available products
  * @returns {Array} List of recommended products
  */
-const getRecommendations = (
+export const getRecommendations = (
   formData = {
     selectedPreferences: [],
     selectedFeatures: [],
@@ -92,5 +92,3 @@ const getRecommendations = (
 
   return [];
 };
-
-export default { getRecommendations };
