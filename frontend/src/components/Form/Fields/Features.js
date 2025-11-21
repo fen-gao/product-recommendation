@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Checkbox from '../../shared/Checkbox';
+import SkeletonLoader from './SkeletonLoader';
 
-function Features({ features, selectedFeatures = [], onFeatureChange }) {
-  const [currentFeatures, setCurrentFeatures] = useState(selectedFeatures)
+function Features({
+  features,
+  selectedFeatures = [],
+  onFeatureChange,
+  loading = false,
+}) {
+  const [currentFeatures, setCurrentFeatures] = useState(selectedFeatures);
 
   const handleFeatureChange = (feature) => {
     const updatedFeatures = currentFeatures.includes(feature)
@@ -12,6 +19,10 @@ function Features({ features, selectedFeatures = [], onFeatureChange }) {
     setCurrentFeatures(updatedFeatures);
     onFeatureChange(updatedFeatures);
   };
+
+  if (loading) {
+    return <SkeletonLoader title="Funcionalidades:" count={4} />;
+  }
 
   return (
     <div className="mb-4">
@@ -33,5 +44,17 @@ function Features({ features, selectedFeatures = [], onFeatureChange }) {
     </div>
   );
 }
+
+Features.propTypes = {
+  features: PropTypes.array.isRequired,
+  selectedFeatures: PropTypes.array,
+  onFeatureChange: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+};
+
+Features.defaultProps = {
+  selectedFeatures: [],
+  loading: false,
+};
 
 export default Features;

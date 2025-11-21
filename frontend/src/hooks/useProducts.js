@@ -5,9 +5,11 @@ const useProducts = () => {
   const [preferences, setPreferences] = useState([]);
   const [features, setFeatures] = useState([]);
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const products = await getProducts();
         const allPreferences = [];
@@ -31,13 +33,15 @@ const useProducts = () => {
         setFeatures(allFeatures);
       } catch (error) {
         console.error('Erro ao obter os produtos:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  return { preferences, features, products };
+  return { preferences, features, products, loading };
 };
 
 export default useProducts;

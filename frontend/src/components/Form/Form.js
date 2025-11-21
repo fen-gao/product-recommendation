@@ -7,7 +7,7 @@ import useForm from '../../hooks/useForm';
 import useRecommendations from '../../hooks/useRecommendations';
 
 function Form({ onRecommendationsUpdate }) {
-  const { preferences, features, products } = useProducts();
+  const { preferences, features, products, loading } = useProducts();
   const { formData, handleChange } = useForm({
     selectedPreferences: [],
     selectedFeatures: [],
@@ -33,12 +33,14 @@ function Form({ onRecommendationsUpdate }) {
     >
       <Preferences
         preferences={preferences}
+        loading={loading}
         onPreferenceChange={(selected) =>
           handleChange('selectedPreferences', selected)
         }
       />
       <Features
         features={features}
+        loading={loading}
         onFeatureChange={(selected) =>
           handleChange('selectedFeatures', selected)
         }

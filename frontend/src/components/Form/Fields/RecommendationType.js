@@ -13,7 +13,9 @@ function RecommendationType({ onRecommendationTypeChange }) {
           onChange={() => onRecommendationTypeChange('SingleProduct')}
           className="mr-2"
         />
-        <label htmlFor="SingleProduct" className="mr-4">Produto Único</label>
+        <label htmlFor="SingleProduct" className="mr-4">
+          Produto Único
+        </label>
         <Checkbox
           type="radio"
           name="recommendationType"
