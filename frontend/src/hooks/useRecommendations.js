@@ -1,5 +1,3 @@
-// useRecommendations.js
-
 import { useState } from 'react';
 import { getRecommendations } from '../services/recommendation.service';
 
