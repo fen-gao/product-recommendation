@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Form from './components/Form/Form';
 import RecommendationList from './components/RecommendationList/RecommendationList';
 
 function App() {
   const [recommendations, setRecommendations] = useState([]);
+  const recommendationsRef = useRef(null);
 
   const handleRecommendationsUpdate = (newRecommendations) => {
     setRecommendations(newRecommendations);
+
+    setTimeout(() => {
+      if (recommendationsRef.current) {
+        recommendationsRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }, 100);
   };
 
   return (
@@ -49,7 +59,7 @@ function App() {
             </div>
 
             {/* Results Section */}
-            <div className="p-6 md:p-8 bg-gray-50">
+            <div ref={recommendationsRef} className="p-6 md:p-8 bg-gray-50">
               <div className="flex items-center mb-6">
                 <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
                   2
