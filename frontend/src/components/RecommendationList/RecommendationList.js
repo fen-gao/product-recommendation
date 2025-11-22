@@ -50,7 +50,6 @@ function RecommendationList({ recommendations }) {
             key={recommendation.id || index}
             className="bg-white rounded-lg border-2 border-gray-200 p-5 hover:border-blue-400 hover:shadow-lg transition-all duration-200"
           >
-            {/* Header */}
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-start space-x-3">
                 <span className="text-3xl">
@@ -80,7 +79,6 @@ function RecommendationList({ recommendations }) {
               )}
             </div>
 
-            {/* Features & Preferences */}
             <div className="space-y-3 mt-4">
               {recommendation.preferences &&
                 recommendation.preferences.length > 0 && (

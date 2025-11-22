@@ -22,7 +22,6 @@ function App() {
   return (
     <div className="bg-gradient-to-br from-blue-50 to-gray-100 min-h-screen py-8 px-4">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-3">
             Recomendador de Produtos
@@ -42,10 +41,8 @@ function App() {
           </p>
         </div>
 
-        {/* Main Content */}
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-            {/* Form Section */}
             <div className="p-6 md:p-8 border-r border-gray-200">
               <div className="flex items-center mb-6">
                 <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
@@ -58,7 +55,6 @@ function App() {
               <Form onRecommendationsUpdate={handleRecommendationsUpdate} />
             </div>
 
-            {/* Results Section */}
             <div ref={recommendationsRef} className="p-6 md:p-8 bg-gray-50">
               <div className="flex items-center mb-6">
                 <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
@@ -73,7 +69,6 @@ function App() {
           </div>
         </div>
 
-        {/* Footer Info */}
         <div className="mt-8 text-center text-sm text-gray-500">
           <p>
             Produtos recomendados com base em suas preferências e
